@@ -1,7 +1,4 @@
 const { Client, GatewayIntentBits } = require("discord.js");
-const fs = require('fs');
-
-const secrets = JSON.parse(fs.readFileSync('./secrets.json'));
 
 const client = new Client({
     intents: [
@@ -11,7 +8,7 @@ const client = new Client({
     ],
 });
 
-const BOT_TOKEN = secrets.BOT_TOKEN;
+const BOT_TOKEN = process.env.BOT_TOKEN;
 
 client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
