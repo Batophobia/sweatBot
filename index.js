@@ -21,10 +21,12 @@ const client = new Client({
     ],
 });
 
-const BOT_TOKEN = process.env.BOT_TOKEN;
-
 client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
+});
+
+client.on('error', (error) => {
+    console.error('Client Error:', error);
 });
 
 client.on("messageCreate", async (message) => {
@@ -99,4 +101,4 @@ async function getStats(username) {
     return null;
 }
 
-client.login(BOT_TOKEN);
+client.login(process.env.BOT_TOKEN).catch(console.error);
