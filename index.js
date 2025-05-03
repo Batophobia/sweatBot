@@ -3,18 +3,11 @@ const express = require("express");
 
 console.log(`Starting bot`);
 
-// None of this matters, it's just for Render to have a Web Service
-const portBindingApp = express();
-portBindingApp.get('/', (req, res) => {
-    res.send('Bot is running');
-});
-portBindingApp.listen(3000, () => {
-    console.log(`Express server running`);
-});
-// End of express server code
-
 process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
+});
+process.on('uncaughtException', error => {
+    console.error('Uncaught exception:', error);
 });
 
 const client = new Client({
@@ -106,3 +99,14 @@ async function getStats(username) {
 }
 
 client.login(process.env.BOT_TOKEN).catch(console.error);
+
+
+// None of this matters, it's just for Render to have a Web Service
+const portBindingApp = express();
+portBindingApp.get('/', (req, res) => {
+    res.send('Bot is running');
+});
+portBindingApp.listen(3000, () => {
+    console.log(`Express server running`);
+});
+// End of express server code
