@@ -13,6 +13,10 @@ portBindingApp.listen(3000, () => {
 });
 // End of express server code
 
+process.on('unhandledRejection', error => {
+    console.error('Unhandled promise rejection:', error);
+});
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
