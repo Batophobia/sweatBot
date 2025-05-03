@@ -1,4 +1,17 @@
 const { Client, GatewayIntentBits } = require("discord.js");
+const express = require("express");
+
+console.log(`Starting bot`);
+
+// None of this matters, it's just for Render to have a Web Service
+const portBindingApp = express();
+app.get('/', (req, res) => {
+    res.send('Bot is running');
+});
+app.listen(3000, () => {
+    console.log(`Express server running`);
+});
+// End of express server code
 
 const client = new Client({
     intents: [
@@ -15,8 +28,15 @@ client.once("ready", () => {
 });
 
 client.on("messageCreate", async (message) => {
-    if (!message.content.toLowerCase().startsWith("!gamertag") || message.author.bot) return;
+    if (message.author.bot) return;
+    if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
+    if (message.content.toLowerCase().startsWith("!sweat")) return await sweat(message);
+});
 
+async function sweat(message) {
+}
+
+async function gamertag(message) {
     const args = message.content.split(" ");
     args.splice(0, 1);
     const username = args.join(" ");
@@ -28,16 +48,13 @@ client.on("messageCreate", async (message) => {
         return;
     }
 
-    // message.channel.send(`Fetching gamertag info for **${username}**...`);
-
     try {
-        const response = await fetch(
-            `https://wort.gg/api/stats/${username.replace(' ', "%20")}/multiplayer`,
-        );
         const data = await response.json();
 
-        if (data && data.stats?.Multiplayer?.Matchmaking?.All?.Stats) {
-            const stats = data.stats.Multiplayer.Matchmaking.All.Stats;
+        const stats = await getStats();
+        if (stats != null) {
+            stats = stats.Multiplayer.Matchmaking.All.Stats;
+
             kd = stats.kills / stats.deaths;
             ad = stats.assists / stats.deaths;
             kad = (stats.kills + stats.assists) / stats.deaths;
@@ -57,6 +74,29 @@ client.on("messageCreate", async (message) => {
             `Could not fetch data for ${username}. The profile may not exist or the service might be unavailable.`,
         );
     }
-});
+}
+
+function getStatResponse() {
+
+}
+
+async function getStats(username) {
+    if (!username) {
+        message.reply(
+            "Please provide a username. Example: !gamertag cutiefulxoxo",
+        );
+        return;
+    }
+
+    const response = await fetch(
+        `https://wort.gg/api/stats/${username.replace(' ', "%20")}/multiplayer`,
+    );
+    const data = await response.json();
+
+    if (data && data.stats) {
+        return data.stats;
+    }
+    return null;
+}
 
 client.login(BOT_TOKEN);
