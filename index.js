@@ -103,7 +103,11 @@ async function gamertag(message) {
 //     return null;
 // }
 
+client.on("debug", console.log);
+client.on("warn", console.warn);
+
 console.log("Attempting bot login")
+console.log(`"${process.env.BOT_TOKEN}"`)
 client.login(process.env.BOT_TOKEN).catch((err) => console.error(err));
 
 
