@@ -1,5 +1,5 @@
 const { Client, GatewayIntentBits } = require("discord.js");
-const express = require("express");
+// const express = require("express");
 require('dotenv').config();
 
 console.log(`Starting bot`);
@@ -112,12 +112,12 @@ console.log(`"${process.env.BOT_TOKEN}"`)
 client.login(process.env.BOT_TOKEN).catch((err) => console.error(err));
 
 
-// None of this matters, it's just for Render to have a Web Service
-const portBindingApp = express();
-portBindingApp.get('/', (req, res) => {
-    res.send('Bot is running');
-});
-portBindingApp.listen(3000, () => {
-    console.log(`Express server running`);
-});
-// End of express server code
+// // None of this matters, it's just for Render to have a Web Service
+// const portBindingApp = express();
+// portBindingApp.get('/', (req, res) => {
+//     res.send('Bot is running');
+// });
+// portBindingApp.listen(3000, () => {
+//     console.log(`Express server running`);
+// });
+// // End of express server code
