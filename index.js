@@ -5,10 +5,10 @@ console.log(`Starting bot`);
 
 // None of this matters, it's just for Render to have a Web Service
 const portBindingApp = express();
-app.get('/', (req, res) => {
+portBindingApp.get('/', (req, res) => {
     res.send('Bot is running');
 });
-app.listen(3000, () => {
+portBindingApp.listen(3000, () => {
     console.log(`Express server running`);
 });
 // End of express server code
