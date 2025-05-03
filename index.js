@@ -35,7 +35,7 @@ client.on("messageCreate", async (message) => {
 });
 
 async function ping(message) {
-    message.reply("pong");
+    message.reply("pongs");
 }
 
 async function sweat(message) {
