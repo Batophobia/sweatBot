@@ -61,14 +61,7 @@ async function gamertag(message) {
         if (stats != null) {
             stats = stats.Multiplayer.Matchmaking.All.Stats;
 
-            kd = stats.kills / stats.deaths;
-            ad = stats.assists / stats.deaths;
-            kad = (stats.kills + stats.assists) / stats.deaths;
-            wl = stats.games_won / (stats.games_completed - stats.games_won);
-
-            message.channel.send(
-                `**${username}** stats:\n🎯 K / D: ${kd.toFixed(2)}\n🤝 A / D: ${ad.toFixed(2)}\n⚔️ K + A / D: ${kad.toFixed(2)}\n🏆 W / L: ${wl.toFixed(2)}`,
-            );
+            sendStats(message, username, stats);
         } else {
             message.channel.send(
                 `No gamertag info found for ${username}. Please verify the username is correct. You might also need to activate the GT on wort.gg first by searching for the tag there.`,
@@ -82,8 +75,15 @@ async function gamertag(message) {
     }
 }
 
-function getStatResponse() {
-    // TODO: formated string for stats
+function sendStats(message, username, stats) {
+    kd = stats.kills / stats.deaths;
+    ad = stats.assists / stats.deaths;
+    kad = (stats.kills + stats.assists) / stats.deaths;
+    wl = stats.games_won / (stats.games_completed - stats.games_won);
+
+    message.channel.send(
+        `**${username}** stats:\n🎯 K / D: ${kd.toFixed(2)}\n🤝 A / D: ${ad.toFixed(2)}\n⚔️ K + A / D: ${kad.toFixed(2)}\n🏆 W / L: ${wl.toFixed(2)}`,
+    );
 }
 
 async function getStats(username, message) {
