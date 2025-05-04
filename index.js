@@ -57,7 +57,7 @@ async function gamertag(message) {
     }
 
     try {
-        const stats = await getStats(username, message);
+        let stats = await getStats(username, message);
         if (stats != null) {
             stats = stats.Multiplayer.Matchmaking.All.Stats;
 
@@ -98,9 +98,6 @@ async function getStats(username, message) {
         `https://wort.gg/api/stats/${username.replace(' ', "%20")}/multiplayer`,
     );
     // console.log(`https://wort.gg/api/stats/${username.replace(' ', "%20")}/multiplayer`)
-    console.log(response)
-    console.log("===========================")
-    console.log(await response.json())
     const data = await response.json();
 
     if (data && data.stats) {
