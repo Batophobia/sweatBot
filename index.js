@@ -57,8 +57,6 @@ async function gamertag(message) {
     }
 
     try {
-        const data = await response.json();
-
         const stats = await getStats(username, message);
         if (stats != null) {
             stats = stats.Multiplayer.Matchmaking.All.Stats;
