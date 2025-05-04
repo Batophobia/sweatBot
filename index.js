@@ -100,7 +100,7 @@ async function getStats(username, message) {
     // console.log(`https://wort.gg/api/stats/${username.replace(' ', "%20")}/multiplayer`)
     console.log(response)
     console.log("===========================")
-    console.log(response.json())
+    console.log(await response.json())
     const data = await response.json();
 
     if (data && data.stats) {
