@@ -1,9 +1,5 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 require('dotenv').config();
-const express = require("express");
-const bodyParser = require("body-parser");
-const crypto = require("crypto");
-const { exec } = require('child_process');
 
 console.log(`Starting bot`);
 
@@ -184,40 +180,3 @@ client.on("warn", console.warn);
 
 console.log("Attempting bot login")
 client.login(process.env.BOT_TOKEN).catch((err) => console.error(err));
-
-
-// GitHub webhook stuff
-const app = express();
-app.use(bodyParser.json({
-    verify: (req, res, buf) => {
-        req.rawBody = buf;
-    }
-}));
-
-function verifySignature(req) {
-    const signature = req.headers['x-hub-signature-256'];
-    const hmac = crypto.createHmac('sha256', process.env.GITHUB_WEBHOOK);
-    const digest = 'sha256=' + hmac.update(req.rawBody).digest('hex');
-    return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(digest));
-}
-
-app.post('/github-webhook', (req, res) => {
-    if (!verifySignature(req)) {
-        console.log('Invalid signature');
-        return res.status(403).send('Forbidden');
-    }
-
-    console.log('Webhook received. Pulling changes...');
-    exec('git pull && pm2 restart sweatBot', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Pull error: ${error}`);
-            return res.status(500).send('Pull failed');
-        }
-        console.log(`Pull success:\n${stdout}`);
-        res.status(200).send('Updated');
-    });
-});
-app.listen(3000, () => {
-    console.log(`Webhook is listening`);
-});
-// End of express code
