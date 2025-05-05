@@ -71,6 +71,12 @@ async function ranked(message) {
                 await message.reply({ embeds: [embed] });
                 return;
             }
+            if (message.content.toLowerCase().startsWith("!rankeddblhc")) { // H3 Hardcore Doubles
+                embed.setDescription('H3 Hardcore Doubles')
+                    .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Hardcore Doubles")[0].rank.toString().padStart(3, "0")}.png`)
+                await message.reply({ embeds: [embed] });
+                return;
+            }
             else {
                 // Discord can only handle 10 embeds, so removing H4
                 stats = stats.sort((a, b) => a.rank < b.rank)
