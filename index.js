@@ -65,15 +65,15 @@ async function ranked(message) {
                 await message.reply({ embeds: [embed] });
                 return;
             }
-            if (message.content.toLowerCase().startsWith("!rankeddbl")) { // H3 Team Doubles
-                embed.setDescription('H3 Team Doubles')
-                    .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Doubles")[0].rank.toString().padStart(3, "0")}.png`)
-                await message.reply({ embeds: [embed] });
-                return;
-            }
             if (message.content.toLowerCase().startsWith("!rankeddblhc")) { // H3 Hardcore Doubles
                 embed.setDescription('H3 Hardcore Doubles')
                     .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Hardcore Doubles")[0].rank.toString().padStart(3, "0")}.png`)
+                await message.reply({ embeds: [embed] });
+                return;
+            }
+            if (message.content.toLowerCase().startsWith("!rankeddbl")) { // H3 Team Doubles
+                embed.setDescription('H3 Team Doubles')
+                    .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Doubles")[0].rank.toString().padStart(3, "0")}.png`)
                 await message.reply({ embeds: [embed] });
                 return;
             }
