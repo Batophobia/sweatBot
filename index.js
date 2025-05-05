@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
