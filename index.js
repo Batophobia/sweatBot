@@ -43,7 +43,7 @@ async function ping(message) {
 }
 
 async function help(message) {
-    message.reply("Available commands:\n**!help**: Show this list of commands\n**!gamertag GAMERTAG**: Display matchmaking stats for the provided gamertag\n**!rankedTS GAMERTAG**: Gets the H3 Team Slayer rank for the provided gamertag\n**!rankedDbl GAMERTAG**: Gets the H3 Team Doubles rank for the provided gamertag\n**!ranked GAMERTAG**: Lists most ranks for the provided gamertag");
+    message.reply("Available commands:\n**!help**: Show this list of commands\n**!gamertag GAMERTAG**: Display matchmaking stats for the provided gamertag\n**!rankedTS GAMERTAG**: Gets the H3 Team Slayer rank for the provided gamertag\n**!rankedDbl GAMERTAG**: Gets the H3 Team Doubles rank for the provided gamertag\n**!ranked GAMERTAG**: Lists top 10 ranks for the provided gamertag");
 }
 
 async function ranked(message) {
