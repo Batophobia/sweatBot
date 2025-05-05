@@ -53,11 +53,11 @@ async function ranked(message) {
 
             const embed = new EmbedBuilder().setTitle(username)
 
-            if (message.content.toLowerCase().startsWith("!rankedTS")) { // H3 Team Slayer
+            if (message.content.toLowerCase().startsWith("!rankedts")) { // H3 Team Slayer
                 embed.setDescription('You are ranked:')
                     .setImage(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Slayer")[0].rank.toString().padStart(3, "0")}.png`)
             }
-            if (message.content.toLowerCase().startsWith("!rankedDbl")) {
+            if (message.content.toLowerCase().startsWith("!rankeddbl")) { // H3 Team Doubles
             }
             else {
 
