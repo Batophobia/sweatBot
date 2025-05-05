@@ -51,16 +51,21 @@ async function ranked(message) {
         if (stats != null) {
             stats = stats.ranks;
 
-            if (message.content.toLowerCase().startsWith("!rankedTS")) {
+            const embed = new EmbedBuilder().setTitle(username)
+
+            if (message.content.toLowerCase().startsWith("!rankedTS")) { // H3 Team Slayer
+                embed.setDescription('You are ranked:')
+                    .setImage(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Slayer")[0].rank.toString().padStart(3, "0")}.png`)
             }
             if (message.content.toLowerCase().startsWith("!rankedDbl")) {
             }
+            else {
 
-            const embed = new EmbedBuilder()
-                .setTitle('Your Rank')
-                .setDescription('You are ranked:')
-                .setImage('https://wort.gg/images/ranks/SMALLRANKICON_022.png')
-                .setColor(0x00AE86);
+            }
+            // embed
+            //     .setDescription('You are ranked:')
+            //     .setImage('https://wort.gg/images/ranks/SMALLRANKICON_022.png')
+            //     .setColor(0x00AE86);
 
             await message.reply({ embeds: [embed] });
         } else {
