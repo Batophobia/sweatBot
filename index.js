@@ -54,15 +54,18 @@ async function ranked(message) {
             const embed = new EmbedBuilder().setTitle(username)
 
             if (message.content.toLowerCase().startsWith("!rankedts")) { // H3 Team Slayer
-                embed.setDescription('H3 Team Slayer:')
-                    .setImage(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Slayer")[0].rank.toString().padStart(3, "0")}.png`)
+                embed.setDescription('H3 Team Slayer')
+                    .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Slayer")[0].rank.toString().padStart(3, "0")}.png`)
             }
             if (message.content.toLowerCase().startsWith("!rankeddbl")) { // H3 Team Doubles
-                embed.setDescription('H3 Team Doubles:')
+                embed.setDescription('H3 Team Doubles')
                     .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Doubles")[0].rank.toString().padStart(3, "0")}.png`)
             }
             else {
-
+                for (var i = 0; i < stats.length; i++) {
+                    embed.setDescription(stats[i].playlist_name)
+                        .setImage(`https://wort.gg/images/ranks/SMALLRANKICON_${stats[i].rank.toString().padStart(3, "0")}.png`)
+                }
             }
             // embed
             //     .setDescription('You are ranked:')
