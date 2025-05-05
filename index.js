@@ -34,32 +34,57 @@ client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
     if (message.content.toLowerCase().startsWith("!ping")) return await ping(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
-    if (message.content.toLowerCase().startsWith("!sweat")) return await sweat(message);
+    if (message.content.toLowerCase().startsWith("!ranked")) return await ranked(message);
 });
 
 async function ping(message) {
     message.reply("pong");
 }
 
-async function sweat(message) {
-}
-
-async function gamertag(message) {
-    const args = message.content.split(" ");
-    args.splice(0, 1);
-    const username = args.join(" ");
-
-    if (!username) {
-        message.reply(
-            "Please provide a username. Example: !gamertag cutiefulxoxo",
-        );
+async function ranked(message) {
+    const username = getUsername(message);
+    if (!username)
         return;
-    }
 
     try {
         let stats = await getStats(username, message);
         if (stats != null) {
-            stats = stats.Multiplayer.Matchmaking.All.Stats;
+            stats = stats.ranks;
+
+            if (message.content.toLowerCase().startsWith("!rankedTS")) {
+            }
+            if (message.content.toLowerCase().startsWith("!rankedDbl")) {
+            }
+
+            const embed = new EmbedBuilder()
+                .setTitle('Your Rank')
+                .setDescription('You are ranked:')
+                .setImage('https://wort.gg/images/ranks/SMALLRANKICON_022.png')
+                .setColor(0x00AE86);
+
+            await message.reply({ embeds: [embed] });
+        } else {
+            message.channel.send(
+                `No gamertag info found for ${username}. Please verify the username is correct. You might also need to activate the GT on wort.gg first by searching for the tag there.`,
+            );
+        }
+    } catch (error) {
+        console.error("API error:", error);
+        message.channel.send(
+            `Could not fetch data for ${username}. The profile may not exist or the service might be unavailable.`,
+        );
+    }
+}
+
+async function gamertag(message) {
+    const username = getUsername(message);
+    if (!username)
+        return;
+
+    try {
+        let stats = await getStats(username, message);
+        if (stats != null) {
+            stats = stats.stats.Multiplayer.Matchmaking.All.Stats;
 
             sendStats(message, username, stats);
         } else {
@@ -73,6 +98,21 @@ async function gamertag(message) {
             `Could not fetch data for ${username}. The profile may not exist or the service might be unavailable.`,
         );
     }
+}
+
+function getUsername(message) {
+    const args = message.content.split(" ");
+    args.splice(0, 1);
+    const username = args.join(" ");
+
+    if (!username) {
+        message.reply(
+            "Please provide a username. Example: !gamertag cutiefulxoxo",
+        );
+        return null;
+    }
+
+    return username;
 }
 
 function sendStats(message, username, stats) {
@@ -101,7 +141,7 @@ async function getStats(username, message) {
     const data = await response.json();
 
     if (data && data.stats) {
-        return data.stats;
+        return data;
     }
     return null;
 }
