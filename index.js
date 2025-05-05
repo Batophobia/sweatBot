@@ -51,28 +51,30 @@ async function ranked(message) {
         if (stats != null) {
             stats = stats.ranks;
 
-            const embed = new EmbedBuilder().setTitle(username)
+            const embeds = [];
+            let embed = new EmbedBuilder().setTitle(username)
 
             if (message.content.toLowerCase().startsWith("!rankedts")) { // H3 Team Slayer
                 embed.setDescription('H3 Team Slayer')
                     .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Slayer")[0].rank.toString().padStart(3, "0")}.png`)
+                embeds.push(embed);
             }
             if (message.content.toLowerCase().startsWith("!rankeddbl")) { // H3 Team Doubles
                 embed.setDescription('H3 Team Doubles')
                     .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Doubles")[0].rank.toString().padStart(3, "0")}.png`)
+                embeds.push(embed);
             }
             else {
                 for (var i = 0; i < stats.length; i++) {
-                    embed.setDescription(stats[i].playlist_name)
-                        .setImage(`https://wort.gg/images/ranks/SMALLRANKICON_${stats[i].rank.toString().padStart(3, "0")}.png`)
+                    embeds.push(new EmbedBuilder()
+                        .setTitle(username)
+                        .setDescription(stats[i].playlist_name)
+                        .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats[i].rank.toString().padStart(3, "0")}.png`)
+                    );
                 }
             }
-            // embed
-            //     .setDescription('You are ranked:')
-            //     .setImage('https://wort.gg/images/ranks/SMALLRANKICON_022.png')
-            //     .setColor(0x00AE86);
 
-            await message.reply({ embeds: [embed] });
+            await message.reply({ embeds });
         } else {
             message.channel.send(
                 `No gamertag info found for ${username}. Please verify the username is correct. You might also need to activate the GT on wort.gg first by searching for the tag there.`,
