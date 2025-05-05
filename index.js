@@ -58,6 +58,8 @@ async function ranked(message) {
                     .setImage(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Slayer")[0].rank.toString().padStart(3, "0")}.png`)
             }
             if (message.content.toLowerCase().startsWith("!rankeddbl")) { // H3 Team Doubles
+                embed.setDescription('You are ranked:')
+                    .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Doubles")[0].rank.toString().padStart(3, "0")}.png`)
             }
             else {
 
