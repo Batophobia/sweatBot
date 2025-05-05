@@ -69,6 +69,7 @@ async function ranked(message) {
                 stats = stats.filter(v => v.playlist_name != "H4 Squad Battle")
                 for (var i = 0; i < stats.length; i++) {
                     embeds.push(new EmbedBuilder()
+                        .setTitle(username)
                         .setDescription(stats[i].playlist_name)
                         .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats[i].rank.toString().padStart(3, "0")}.png`)
                     );
