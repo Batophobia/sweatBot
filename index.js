@@ -71,8 +71,8 @@ async function ranked(message) {
             }
             else {
                 // Discord can only handle 10 embeds, so removing H4
-                stats = stats.filter(v => v.playlist_name != "H4 Squad Battle")
-                for (var i = 0; i < stats.length; i++) {
+                stats = stats.sort((a, b) => a.rank < b.rank)
+                for (var i = 0; i < stats.length && i < 10; i++) {
                     embeds.push(new EmbedBuilder()
                         .setTitle(username)
                         .setDescription(stats[i].playlist_name)
