@@ -33,12 +33,17 @@ client.on('error', (error) => {
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
     if (message.content.toLowerCase().startsWith("!ping")) return await ping(message);
+    if (message.content.toLowerCase().startsWith("!help")) return await help(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
     if (message.content.toLowerCase().startsWith("!ranked")) return await ranked(message);
 });
 
 async function ping(message) {
     message.reply("pong");
+}
+
+async function help(message) {
+    message.reply("Available commands:\n**!help**: Show this list of commands\n**!gamertag GAMERTAG**: Display matchmaking stats for the provided gamertag\n**!rankedTS GAMERTAG**: Gets the H3 Team Slayer rank for the provided gamertag\n**!rankedDbl GAMERTAG**: Gets the H3 Team Doubles rank for the provided gamertag\n**!ranked GAMERTAG**: Lists most ranks for the provided gamertag");
 }
 
 async function ranked(message) {
