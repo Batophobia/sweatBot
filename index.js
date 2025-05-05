@@ -62,12 +62,14 @@ async function ranked(message) {
             if (message.content.toLowerCase().startsWith("!rankedts")) { // H3 Team Slayer
                 embed.setDescription('H3 Team Slayer')
                     .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Slayer")[0].rank.toString().padStart(3, "0")}.png`)
-                embeds.push(embed);
+                await message.reply({ embeds: [embed] });
+                return;
             }
             if (message.content.toLowerCase().startsWith("!rankeddbl")) { // H3 Team Doubles
                 embed.setDescription('H3 Team Doubles')
                     .setThumbnail(`https://wort.gg/images/ranks/SMALLRANKICON_${stats.filter(v => v.playlist_name == "H3 Team Doubles")[0].rank.toString().padStart(3, "0")}.png`)
-                embeds.push(embed);
+                await message.reply({ embeds: [embed] });
+                return;
             }
             else {
                 // Discord can only handle 10 embeds, so removing H4
