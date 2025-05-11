@@ -32,6 +32,7 @@ client.on("messageCreate", async (message) => {
     if (message.content.toLowerCase().startsWith("!help")) return await help(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
     if (message.content.toLowerCase().startsWith("!ranked")) return await ranked(message);
+    if (message.content.toLowerCase().startsWith("!askcutie")) return await ask(message);
 });
 
 async function ping(message) {
@@ -46,6 +47,13 @@ async function help(message) {
 **!rankedDbl GAMERTAG**: Gets the \`H3 Team Doubles\` rank for the provided gamertag
 **!rankedDblHC GAMERTAG**: Gets the \`H3 Hardcore Doubles\` rank for the provided gamertag
 **!ranked GAMERTAG**: Lists top 10 ranks for the provided gamertag`);
+}
+
+async function ask(message) {
+    if (Math.random() > .5)
+        message.reply(`Yuppers`);
+    else
+        message.reply(`Nopers`);
 }
 
 async function ranked(message) {
