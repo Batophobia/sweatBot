@@ -46,7 +46,8 @@ async function help(message) {
 **!rankedTS GAMERTAG**: Gets the \`H3 Team Slayer\` rank for the provided gamertag
 **!rankedDbl GAMERTAG**: Gets the \`H3 Team Doubles\` rank for the provided gamertag
 **!rankedDblHC GAMERTAG**: Gets the \`H3 Hardcore Doubles\` rank for the provided gamertag
-**!ranked GAMERTAG**: Lists top 10 ranks for the provided gamertag`);
+**!ranked GAMERTAG**: Lists top 10 ranks for the provided gamertag
+**!askCutie YES OR NO QUESTION**: Ask a yes/no question and see what Cutieful has to say`);
 }
 
 async function ask(message) {
