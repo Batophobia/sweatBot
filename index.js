@@ -32,8 +32,9 @@ client.on("messageCreate", async (message) => {
     if (message.content.toLowerCase().startsWith("!help")) return await help(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
     if (message.content.toLowerCase().startsWith("!ranked")) return await ranked(message);
-    if (message.content.toLowerCase().startsWith("!betray")) return await betrayals(message);
+    if (message.content.toLowerCase().startsWith("!betrayal")) return await betrayals(message);
     if (message.content.toLowerCase().startsWith("!askcutie")) return await ask(message);
+    if (message.content.toLowerCase().startsWith("!betray")) return await betray(message);
 });
 
 async function ping(message) {
@@ -57,6 +58,10 @@ async function ask(message) {
         message.reply(`Yuppers`);
     else
         message.reply(`Nopers`);
+}
+
+async function betray(message) {
+    // TODO: `fuckchris` style counter
 }
 
 async function ranked(message) {
