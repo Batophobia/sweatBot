@@ -32,6 +32,7 @@ client.on("messageCreate", async (message) => {
     if (message.content.toLowerCase().startsWith("!help")) return await help(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
     if (message.content.toLowerCase().startsWith("!ranked")) return await ranked(message);
+    if (message.content.toLowerCase().startsWith("!betray")) return await betrayals(message);
     if (message.content.toLowerCase().startsWith("!askcutie")) return await ask(message);
 });
 
@@ -47,6 +48,7 @@ async function help(message) {
 **!rankedDbl GAMERTAG**: Gets the \`H3 Team Doubles\` rank for the provided gamertag
 **!rankedDblHC GAMERTAG**: Gets the \`H3 Hardcore Doubles\` rank for the provided gamertag
 **!ranked GAMERTAG**: Lists top 10 ranks for the provided gamertag
+**!betrayals GAMERTAG**: Display \`betrayal\` stats for the provided gamertag
 **!askCutie YES OR NO QUESTION**: Ask a yes/no question and see what Cutieful has to say`);
 }
 
@@ -101,6 +103,32 @@ async function ranked(message) {
             }
 
             await message.reply({ embeds });
+        } else {
+            message.channel.send(
+                `No gamertag info found for ${username}. Please verify the username is correct. You might also need to activate the GT on wort.gg first by searching for the tag there.`,
+            );
+        }
+    } catch (error) {
+        console.error("API error:", error);
+        message.channel.send(
+            `Could not fetch data for ${username}. The profile may not exist or the service might be unavailable.`,
+        );
+    }
+}
+
+async function betrayals(message) {
+    const username = getUsername(message);
+    if (!username)
+        return;
+
+    try {
+        let stats = await getStats(username, message);
+        if (stats != null) {
+            stats = stats.stats.Multiplayer.Matchmaking.All.Stats;
+
+            message.channel.send(
+                `**${username}** has betrayed ${stats.betrayals} times 🗡️`,
+            );
         } else {
             message.channel.send(
                 `No gamertag info found for ${username}. Please verify the username is correct. You might also need to activate the GT on wort.gg first by searching for the tag there.`,
