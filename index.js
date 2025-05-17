@@ -191,9 +191,10 @@ function sendStats(message, username, stats) {
     ad = stats.assists / stats.deaths;
     kad = (stats.kills + stats.assists) / stats.deaths;
     wl = stats.games_won / (stats.games_completed - stats.games_won);
+    kpg = stats.kills / stats.games_completed;
 
     message.channel.send(
-        `**${username}** stats:\n🎯 K / D: ${kd.toFixed(2)}\n🤝 A / D: ${ad.toFixed(2)}\n⚔️ K + A / D: ${kad.toFixed(2)}\n🏆 W / L: ${wl.toFixed(2)}`,
+        `**${username}** stats:\n🎯 K / D: ${kd.toFixed(2)}\n🤝 A / D: ${ad.toFixed(2)}\n⚔️ K + A / D: ${kad.toFixed(2)}\n💀 K / G: ${kpg.toFixed(2)}\n🏆 W / L: ${wl.toFixed(2)}`,
     );
 }
 
