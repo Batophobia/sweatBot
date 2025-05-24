@@ -92,6 +92,7 @@ async function betray(message) {
             console.log("Error", err);
         } else {
             console.log("Success", data.Item);
+            console.log({ data });
         }
     });
     console.log(resp)
