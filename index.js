@@ -1,6 +1,8 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 const fs = require('node:fs');
+const AWS = require('aws-sdk');
 require('dotenv').config();
+AWS.config.update({ region: "us-east-2" });
 
 console.log(`Starting bot`);
 
@@ -35,6 +37,8 @@ client.once("ready", () => {
 client.on('error', (error) => {
     console.error('Client Error:', error);
 });
+
+var docClient = new AWS.DynamoDB.DocumentClient({ apiVersion: "2012-08-10" });
 
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
@@ -74,8 +78,24 @@ async function ask(message) {
 }
 
 async function betray(message) {
-    // TODO: `fuckchris` style counter
+    const username = getUsername(message);
+    if (!username)
+        return;
 
+    let params = {
+        TableName: "betrays",
+        Key: { username },
+    };
+
+    const resp = await docClient.get(params, function (err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            console.log("Success", data.Item);
+        }
+    });
+    console.log(resp)
+    return resp
 }
 
 async function roast(message) {
