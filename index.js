@@ -12,7 +12,7 @@ process.on('uncaughtException', error => {
 });
 
 let roastList = [];
-fs.readFile('/Users/joe/test.txt', 'utf8', (err, data) => {
+fs.readFile('./roasts.txt', 'utf8', (err, data) => {
     if (err) {
         console.error(err);
         return;
