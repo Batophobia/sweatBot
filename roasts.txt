@@ -16,12 +16,10 @@
 <gamertag> thinks yelling louder makes the bullets hit harder.
 <gamertag>’s mic sounds like it was forged in a thunderstorm.
 <gamertag> gives directions like, “He’s by that rock, you know, the rock.”
-<gamertag>’s squad leadership has us losing 50-12 on Slayer.
 <gamertag> tilts faster than a Jenga tower on a rollercoaster.
 <gamertag> rages like every death is a personal betrayal.
 <gamertag> blames lag even in LAN.
 <gamertag> has more excuses than kills
-<gamertag> misses BR shots like it’s part of a pacifist run.
 <gamertag> thinks a perfect 4-shot is just a myth.
 <gamertag> reloads after every kill like it’s a ritual.
 <gamertag> couldn’t stick a Warthog if it parked next to them.
@@ -29,7 +27,6 @@
 <gamertag> thinks strafing is just dancing side to side with no purpose.
 <gamertag> aims like their reticle has commitment issues.
 <gamertag> got bodied by someone dual-wielding spikers.
-<gamertag> charges power weapons only to gift them to the other team.
 <gamertag> crouch-walks like they think they’re in Halo: Thief Edition.
 <gamertag> once got ninja’d by someone with inverted controls.
 <gamertag>’s BR shots are more spread out than a conspiracy theory.
@@ -37,11 +34,9 @@
 <gamertag> couldn’t win a BR battle with host advantage and divine intervention.
 <gamertag> hits more walls than Spartans.
 <gamertag> plays like the goal is to collect deaths
-<gamertag> gets out-DMR’d in a BR-only game.
 <gamertag> rushes overshield just to die faster with style.
 <gamertag> reloads mid-fight like they’re auditioning for a tragedy.
 <gamertag> plays like they skipped the tutorial and the rest of Halo 3.
-<gamertag> uses the sword like it’s a melee deterrent.
 <gamertag> melees twice and still dies first.
 <gamertag> walks past the flag like it’s none of their business.
 <gamertag> thinks power weapon control is just a suggestion.
@@ -65,10 +60,9 @@
 <gamertag> says “we got this” right before quitting out.
 <gamertag> tries to coach while getting outslayed every game.
 <gamertag>’s mic sounds like it was pulled from a 2007 bag of chips.
-<gamertag> says “trust” right before charging sniper with an AR.
+<gamertag> says “trust me” right before charging sniper with an AR.
 <gamertag> always talks about “carrying” but never shows up.
 <gamertag> gives more excuses than assists.
-<gamertag> talks like they’ve never been humbled by a 12-year-old
 <gamertag> thinks they’re the main character in a game of support roles
 <gamertag>’s voice gets louder the more wrong they are.
 <gamertag> guards the flag by running away from it.
@@ -78,8 +72,6 @@
 <gamertag> scores in KOTH — for the enemy team.
 <gamertag> guards the hill like it’s optional real estate.
 <gamertag> plays objective like they’re allergic to winning.
-<gamertag> picks up the flag and dies faster than a Spartan in traffic.
-<gamertag> is the reason we lose with 4 caps and 0 defense.
 <gamertag> carries the ball like it’s cursed
 <gamertag> hops in vehicles like it’s a getaway, not a strategy.
 <gamertag> defends the hill from the other side of the map
@@ -110,14 +102,11 @@
 <gamertag> jumps into rockets like it’s a trust fall.
 <gamertag> hears “don’t push” and sprints straight in.
 <gamertag> stands still during BR fights like a deer in headlights.
-<gamertag> forgets to reload every fight, like a challenge run.
 <gamertag> gets backsmacked more than anyone in matchmaking history.
-<gamertag> walks into lifts with enemies waiting at the top — every time.
 <gamertag> gets baited by shiny weapons like a magpie
 <gamertag> loses sniper duels to players using the AR.
 <gamertag> runs out of ammo mid-fight like it’s a tradition.
 <gamertag>’s map awareness is lower than their K/D.
-<gamertag> makes every match feel like a 3v
 <gamertag> could get outsmarted by a Brute.
 <gamertag> takes longer to get into position than a Scarab.
 <gamertag> is the reason we all miss host advantage.
