@@ -87,18 +87,15 @@ async function betray(message) {
         Key: { username: username.toLowerCase() },
     };
 
-    const resp = await docClient.get(params, function (err, data) {
+    await docClient.get(params, function (err, data) {
         if (err) {
             console.log("Error", err);
         } else {
             console.log("Success", data.Item);
             console.log({ data });
-            message.channel.send(`${username} has been betrayed X times.`);
-            return data.Item
+            message.channel.send(`${username} has been betrayed ${data.Item.betrays} times.`);
         }
     });
-    console.log({ resp })
-    return resp
 }
 
 async function roast(message) {
