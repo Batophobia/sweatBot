@@ -93,6 +93,7 @@ async function betray(message) {
         } else {
             console.log("Success", data.Item);
             console.log({ data });
+            return data.Item
         }
     });
     console.log(resp)
