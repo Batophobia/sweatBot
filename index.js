@@ -82,8 +82,9 @@ async function roast(message) {
     if (!username)
         return;
 
-    console.log(roastList[0].replace("<gamertag>", username))
-    message.channel.send(roastList[0].replace("<gamertag>", username));
+    let idx = batman(roastList.length)
+    console.log(roastList[idx].replace("<gamertag>", username))
+    message.channel.send(roastList[idx].replace("<gamertag>", username));
 }
 
 async function ranked(message) {
@@ -238,6 +239,10 @@ async function getStats(username, message) {
         return data;
     }
     return null;
+}
+
+function batman(max, min = 0) {
+    return Math.floor(Math.random() * max) + min;
 }
 
 client.on("debug", console.log);
