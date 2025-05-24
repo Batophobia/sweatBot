@@ -82,17 +82,27 @@ async function betray(message) {
     if (!username)
         return;
 
-    let params = {
-        TableName: "betrays",
-        Key: { username: username.toLowerCase() },
-    };
+    const TableName = "betrays";
 
-    await docClient.get(params, function (err, data) {
+    await docClient.get({ TableName, Key: { username: username.toLowerCase() } }, function (err, data) {
         if (err) {
             console.log("Error", err);
         } else {
-            console.log("Success", data.Item);
-            console.log({ data });
+            let resp = {};
+            if (!data.Item)
+                resp = { betrays: 0, username: username.toLowerCase() };
+            else
+                resp = data.Item;
+
+            resp.betrays++;
+
+            docClient.put({ TableName, Item: resp }, function (err, data) {
+                if (err) {
+                    console.log("Error", err);
+                } else {
+                    console.log({ data });
+                }
+            });
             message.channel.send(`${username} has been betrayed ${data.Item.betrays} times.`);
         }
     });
