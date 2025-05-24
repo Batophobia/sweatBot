@@ -83,7 +83,7 @@ async function roast(message) {
         return;
 
     let idx = batman(roastList.length)
-    console.log(roastList[idx].replace("<gamertag>", username))
+    console.log(roastList[roastList.length].replace("<gamertag>", username))
     message.channel.send(roastList[idx].replace("<gamertag>", username));
 }
 
