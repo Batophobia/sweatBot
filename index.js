@@ -1,4 +1,5 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
+const fs = require('node:fs');
 require('dotenv').config();
 
 console.log(`Starting bot`);
@@ -8,6 +9,16 @@ process.on('unhandledRejection', error => {
 });
 process.on('uncaughtException', error => {
     console.error('Uncaught exception:', error);
+});
+
+let roastList = [];
+fs.readFile('/Users/joe/test.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    roastList = data.split("\n");
+    console.log(roastList);
 });
 
 const client = new Client({
@@ -28,12 +39,14 @@ client.on('error', (error) => {
 
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
+    console.log({ message });
     if (message.content.toLowerCase().startsWith("!ping")) return await ping(message);
     if (message.content.toLowerCase().startsWith("!help")) return await help(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
     if (message.content.toLowerCase().startsWith("!ranked")) return await ranked(message);
     if (message.content.toLowerCase().startsWith("!betrayal")) return await betrayals(message);
     if (message.content.toLowerCase().startsWith("!askcutie")) return await ask(message);
+    if (message.content.toLowerCase().startsWith("!roast")) return await roast(message);
     if (message.content.toLowerCase().startsWith("!betray")) return await betray(message);
 });
 
@@ -62,6 +75,14 @@ async function ask(message) {
 
 async function betray(message) {
     // TODO: `fuckchris` style counter
+}
+
+async function roast(message) {
+    const username = getUsername(message);
+    if (!username)
+        return;
+
+    console.log(roastList[0].replace("<gamertag>", username))
 }
 
 async function ranked(message) {
