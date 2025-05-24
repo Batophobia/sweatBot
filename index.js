@@ -93,6 +93,7 @@ async function betray(message) {
         } else {
             console.log("Success", data.Item);
             console.log({ data });
+            message.channel.send(`${username} has been betrayed X times.`);
             return data.Item
         }
     });
