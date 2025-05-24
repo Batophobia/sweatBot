@@ -38,7 +38,7 @@ client.on('error', (error) => {
 
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
-    logFile(`userID: ${message.author.id}, userName: ${message.author.username}, command: ${message.content}`);
+    logFile(`userID: ${message.author.id}, userName: ${message.author.username}, command: ${message.content}\n`);
     if (message.content.toLowerCase().startsWith("!ping")) return await ping(message);
     if (message.content.toLowerCase().startsWith("!help")) return await help(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
@@ -245,7 +245,7 @@ async function getStats(username, message) {
 }
 
 function logFile(msg) {
-    fs.appendFile('./log.log', msg, function (err) {
+    fs.appendFileSync('./log.log', msg, function (err) {
         if (err) throw err;
         console.log('Saved!');
     });
