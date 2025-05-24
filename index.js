@@ -89,10 +89,10 @@ async function betray(message) {
             console.log("Error", err);
         } else {
             let resp = {};
-            if (!data.Item)
-                resp = { betrays: 0, username: username.toLowerCase() };
-            else
+            if (Object.keys(data).includes("Item"))
                 resp = data.Item;
+            else
+                resp = { betrays: 0, username: username.toLowerCase() };
 
             resp.betrays++;
 
