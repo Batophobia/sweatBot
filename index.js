@@ -82,6 +82,7 @@ async function roast(message) {
     if (!username)
         return;
 
+    message.channel.send(roastList[0].replace("<gamertag>", username));
     console.log(roastList[0].replace("<gamertag>", username))
 }
 
