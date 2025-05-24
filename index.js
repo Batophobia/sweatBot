@@ -84,7 +84,7 @@ async function betray(message) {
 
     let params = {
         TableName: "betrays",
-        Key: { username },
+        Key: { username: username.toLowerCase() },
     };
 
     const resp = await docClient.get(params, function (err, data) {
