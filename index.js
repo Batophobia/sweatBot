@@ -18,7 +18,6 @@ fs.readFile('./roasts.txt', 'utf8', (err, data) => {
         return;
     }
     roastList = data.split("\n");
-    console.log(roastList);
 });
 
 const client = new Client({
@@ -39,7 +38,7 @@ client.on('error', (error) => {
 
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
-    console.log({ userID: message.author.id, userName: message.author.username });
+    logFile(`userID: ${message.author.id}, userName: ${message.author.username}, command: ${message.content}`);
     if (message.content.toLowerCase().startsWith("!ping")) return await ping(message);
     if (message.content.toLowerCase().startsWith("!help")) return await help(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
@@ -76,6 +75,7 @@ async function ask(message) {
 
 async function betray(message) {
     // TODO: `fuckchris` style counter
+
 }
 
 async function roast(message) {
@@ -242,6 +242,13 @@ async function getStats(username, message) {
         return data;
     }
     return null;
+}
+
+function logFile(msg) {
+    fs.appendFile('./log.log', msg, function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+    });
 }
 
 function batman(max, min = 0) {
