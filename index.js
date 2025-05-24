@@ -96,14 +96,14 @@ async function betray(message) {
 
             resp.betrays++;
 
-            docClient.put({ TableName, Item: resp }, function (err, data) {
+            docClient.put({ TableName, Item: resp }, function (err) {
                 if (err) {
                     console.log("Error", err);
                 } else {
-                    console.log({ data });
+                    console.log("Success");
+                    message.channel.send(`${username} has been betrayed ${resp.betrays} times.`);
                 }
             });
-            message.channel.send(`${username} has been betrayed ${data.Item.betrays} times.`);
         }
     });
 }
