@@ -96,7 +96,7 @@ async function betray(message) {
             return data.Item
         }
     });
-    console.log(resp)
+    console.log({ resp })
     return resp
 }
 
