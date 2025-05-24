@@ -39,7 +39,7 @@ client.on('error', (error) => {
 
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
-    console.log({ message });
+    console.log({ userID: message.author.id, userName: message.author.username });
     if (message.content.toLowerCase().startsWith("!ping")) return await ping(message);
     if (message.content.toLowerCase().startsWith("!help")) return await help(message);
     if (message.content.toLowerCase().startsWith("!gamertag")) return await gamertag(message);
@@ -82,8 +82,8 @@ async function roast(message) {
     if (!username)
         return;
 
-    message.channel.send(roastList[0].replace("<gamertag>", username));
     console.log(roastList[0].replace("<gamertag>", username))
+    message.channel.send(roastList[0].replace("<gamertag>", username));
 }
 
 async function ranked(message) {
