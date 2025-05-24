@@ -63,6 +63,7 @@ async function help(message) {
 **!rankedDblHC GAMERTAG**: Gets the \`H3 Hardcore Doubles\` rank for the provided gamertag
 **!ranked GAMERTAG**: Lists top 10 ranks for the provided gamertag
 **!betrayals GAMERTAG**: Display \`betrayal\` stats for the provided gamertag
+**!roast GAMERTAG**: Roast the provided gamertag
 **!askCutie YES OR NO QUESTION**: Ask a yes/no question and see what Cutieful has to say`);
 }
 
@@ -83,7 +84,9 @@ async function roast(message) {
         return;
 
     let idx = batman(roastList.length)
-    console.log(roastList[roastList.length].replace("<gamertag>", username))
+    if (idx >= roastList.length)
+        idx = 0;
+
     message.channel.send(roastList[idx].replace("<gamertag>", username));
 }
 
