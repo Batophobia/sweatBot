@@ -67,6 +67,7 @@ async function help(message) {
 **!ranked GAMERTAG**: Lists top 10 ranks for the provided gamertag
 **!betrayals GAMERTAG**: Display \`betrayal\` stats for the provided gamertag
 **!roast GAMERTAG**: Roast the provided gamertag
+**!betray GAMERTAG**: Betray the provided gamertag
 **!askCutie YES OR NO QUESTION**: Ask a yes/no question and see what Cutieful has to say`);
 }
 
